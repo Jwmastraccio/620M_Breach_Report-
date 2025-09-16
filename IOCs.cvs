@@ -1,1 +1,10 @@
-
+Type,Value,Description,First Seen,Source
+Email,user1@example.com,Compromised account from 500px,2018-07-05,The Register
+Email,user2@example.com,Compromised account from Dubsmash,2018-12-15,The Register
+Email,user3@example.com,Compromised account from MyFitnessPal,2018-02-15,The Register
+Email,user4@example.com,Compromised account from MyHeritage,2017-10-15,The Register
+Email,user5@example.com,Compromised account from EyeEm,2018-02-15,The Register
+Domain,500px.com,Compromised platform,2018-07-05,The Register
+Domain,dubsmash.com,Compromised platform,2018-12-15,The Register
+Domain,myfitnesspal.com,Compromised platform,2018-02-15,The Register
+Domain,myheritage.com,Compromised platform,2017-10-15,The Register
