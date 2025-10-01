@@ -17,8 +17,13 @@ This breach demonstrates the **risks of credential reuse and the monetization of
 - **Method:** Exploited web application vulnerabilities to gain unauthorized access to databases
 
 ---
+## 3a. Investigation Timeline
+- **2019-02-10:** Dark web marketplaces list the combined 620M dataset for sale.
+- **2019-02-12:** Security researchers confirm overlap with earlier site breaches.
+- **2019-02-13:** Major news outlets report on sale; victim sites start password resets.
+- **2019-02-15:** Internal threat intel teams add compromised emails to watchlists.
 
-### 3. Breach Overview
+### 3b. Breach Overview
 | Platform       | Accounts Compromised | Data Exposed | Date of Breach |
 |----------------|-------------------|--------------|----------------|
 | 500px          | 14,870,304        | Email, username, MD5/SHA512 hashed passwords, PII | July 2018 |
@@ -45,8 +50,14 @@ This breach demonstrates the **risks of credential reuse and the monetization of
 See the attached [`IOCs.csv`](./IOCs.csv) for safe, redacted examples of compromised accounts.
 
 ---
+## 6a. Detection & Monitoring
+- **SIEM query:** flag login attempts for any users whose emails appear in leaked dataset.
+- **Splunk example:**  
+  ```spl
+  index=auth src_ip!=internal_ip user IN [inputlookup leaked_emails.csv]
+-Alert logic: repeated failed logins followed by success -> possible credential stuffing
 
-### 6. Defensive Recommendations
+### 6b. Defensive Recommendations
 1. **Multi-Factor Authentication:** Strongly encourage MFA on all accounts.  
 2. **Monitor Suspicious Login Activity:** Look for logins from unusual locations/devices.  
 3. **Password Hygiene:** Reset passwords and avoid reuse across platforms.  
@@ -59,3 +70,11 @@ See the attached [`IOCs.csv`](./IOCs.csv) for safe, redacted examples of comprom
 - The Register: [620 million accounts stolen, dark web sale](https://www.theregister.com/2019/02/11/620_million_hacked_accounts_dark_web/)  
 - 500px Security FAQ: [500px breach announcement](https://support.500px.com/hc/en-us/articles/360011651393)  
 - Have I Been Pwned: [HotTopic breach details](https://haveibeenpwned.com/Breach/HotTopic)
+
+## 8. Lessons Learned
+- Credential reuse across multiple services remains a major vulnerability.
+- Early dark-web monitoring can shorten response time.
+- Integrating breach feeds into SIEM improves proactive detection.
+
+> **Note:** This case study is for educational/portfolio purposes.  
+> No sensitive data is included — all sample IOCs are redacted or synthetic.
